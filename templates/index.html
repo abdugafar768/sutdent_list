@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>students</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        table {
+            width: 80%;
+            margin: auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+            
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        a.button {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            text-align: center;
+            text-decoration: none;
+            background-color: aquamarine;
+            color: #000;
+            border-radius: 5px;
+            margin-left: 20%;
+        }
+        a.button:hover {
+            background-color: #5cb85c;
+            color: #fff;
+        }
+        .delet {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 12px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .delete-button:hover {
+            background-color: #cc0000;
+        }
+        .edit {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 12px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .edit:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>List of Sofclub Students</h1>    
+    <a href="create" style="text-align: center; text-decoration: none; background-color: aquamarine; padding: 12px 10px;">create Student</a>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>Fullname</th>
+            <th>Date of Birth</th>
+            <th>Adress</th>
+            <th>Biography</th>
+            <th>is merried</th>
+        </tr>
+       {% for student in  students_list  %}
+        <tr>
+            <th>{{student.id}}</th>
+            <th>{{student.first_name}} {{student.last_name}}</th>
+            <th>{{student.date_of_birth}}</th>
+            <th>{{student.adress}}</th>
+            <th>{{student.bio}}</th>
+            <th>{{student.is_merried}}</th>
+            <td> <a href='{% url "update_student" student.id %}' class = 'edit'> Edit</a></td>
+            <td> <a href='{% url "delete_student" student.id %}' class = 'delet'> Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+
+   
+</body>
+</html>
